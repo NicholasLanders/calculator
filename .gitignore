@@ -1,0 +1,34 @@
+# Node.js dependencies
+node_modules/
+
+# TypeScript output files
+dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker-related files
+.dockerignore
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables (if you add a .env file later)
+.env
+
+# OS generated files
+*.swp
+*.swo
+*.bak
+
+# IDE/Editor specific
+.vscode/
+.idea/
+
+# Nginx files (if any temporary or sensitive configs)
+nginx.conf.backup
