@@ -1,19 +1,48 @@
-input {
-  display: flex;
-  text-align: right;
-  width: 95.7vw;
-  height: 10vh;
-}
-
-body {
-  padding: 5px solid black;
-  height: 75vh;
-  background-color: rgba(240, 240, 240, 255);
-}
+/** {
+  max-width: 1000px;
+  max-height: 1000px;
+}*/
 
 button {
-  flex: 1 1 33.333%;
-  height: 20vh;
+  border-radius: 10px;
+  width: 8vw;
+  height: 10vh;
+  font-size: 3vh;
+}
+
+h1 {
+  text-align: center;
+}
+
+#display {
+  margin-top: 2vh;
+  text-align: right;
+  width: 32vw;
+  height: 10vh;
+  font-size: 5vh;
+}
+
+#display::placeholder {
+  color: black;
+}
+
+#calculator-container {
+  border-radius: 10px;
+  background-color: lightgrey;
+  width: 40vw;
+  height: 65vh;
+  justify-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#buttons-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#C {
+  grid-column: 4;
 }
 
 .number {
@@ -22,13 +51,4 @@ button {
 
 .effect {
   background-color: rgba(255, 204, 0, 255);
-}
-
-.buttons {
-  display: flex;
-  /*This adjusts horizontally*/
-  justify-content: center;
-  /*This adjusts the vertical*/
-  align-items: center;
-  flex-wrap: wrap;
 }
