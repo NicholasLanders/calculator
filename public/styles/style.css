@@ -1,6 +1,6 @@
 button {
   border-radius: 10px;
-  font-size: 200%;
+  font-size: 2rem;
 }
 
 h1 {
@@ -18,7 +18,7 @@ body {
   text-align: right;
   width: 80%;
   height: 15%;
-  font-size: 200%;
+  font-size: 2rem;
 }
 
 #display::placeholder {
