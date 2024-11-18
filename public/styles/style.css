@@ -1,28 +1,5 @@
-button {
-  border-radius: 10px;
-  font-size: 2rem;
-}
-
-h1 {
-  text-align: center;
-}
-
 body {
   background-color: beige;
-}
-
-#display {
-  margin-top: 10%;
-  margin-left: 10%;
-  border-radius: 10px;
-  text-align: right;
-  width: 80%;
-  height: 15%;
-  font-size: 2rem;
-}
-
-#display::placeholder {
-  color: black;
 }
 
 #calculator-container {
@@ -46,14 +23,52 @@ body {
   height: 70%;
 }
 
-#C {
-  grid-column: 4;
+button {
+  border-radius: 10px;
+  font-size: 2rem;
 }
 
-.number {
+h1 {
+  text-align: center;
+}
+
+#display {
+  margin-top: 10%;
+  margin-left: 10%;
+  border-radius: 10px;
+  text-align: right;
+  width: 80%;
+  height: 15%;
+  font-size: 2rem;
+}
+
+#display::placeholder {
+  color: black;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.effect:hover,
+#C:hover {
   background-color: white;
 }
 
-.effect {
+.effect.clicked {
+  background-color: white;
+}
+
+.number,
+.appendItem {
+  background-color: white;
+}
+
+.effect,
+#C {
   background-color: rgba(255, 204, 0, 255);
+}
+
+#C {
+  grid-column: 4;
 }

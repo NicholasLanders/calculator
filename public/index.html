@@ -2,10 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
     <link rel="stylesheet" href="styles/style.css" />
-    <script src="dist/index.js"></script>
-    <script src="dist/calculator.js"></script>
   </head>
   <body>
     <h1>
@@ -27,10 +26,11 @@
         <button class="number">3</button>
         <button class="effect">-</button>
         <button class="number">0</button>
-        <button class="number">.</button>
-        <button class="number">+/-</button>
+        <button id="period" class="appendItem">.</button>
+        <button id="plusOrMinus" class="appendItem">+/-</button>
         <button class="effect">=</button>
-        <button id="C" class="effect">C</button>
+        <button id="C">C</button>
+        <script src="../dist/index.js"></script>
       </div>
     </div>
   </body>
