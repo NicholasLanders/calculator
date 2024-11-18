@@ -51,7 +51,8 @@ button:hover {
 }
 
 .effect:hover,
-#C:hover {
+#C:hover,
+#equals:hover {
   background-color: white;
 }
 
@@ -65,7 +66,8 @@ button:hover {
 }
 
 .effect,
-#C {
+#C,
+#equals {
   background-color: rgba(255, 204, 0, 255);
 }
 

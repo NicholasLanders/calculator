@@ -3,20 +3,27 @@ const effects = document.querySelectorAll(".effect");
 const display = document.getElementById("display") as HTMLInputElement;
 const period = document.getElementById("period");
 const C = document.getElementById("C");
+const equals = document.getElementById("equals");
 const plusOrMinus = document.getElementById("plusOrMinus");
 
 let curTotal: number = 0;
+let firstStr: string = "";
 let effectClicked: string = "";
+
+equals?.addEventListener("click", () => {
+  curTotal = compute(display.value);
+  removeEffectClicked();
+  display.value = String(curTotal);
+  firstStr = "";
+});
 
 period?.addEventListener("click", () => {
   if (!display.value.includes(".")) {
-    removeEffectClicked();
     display.value += period?.innerHTML;
   }
 });
 
 plusOrMinus?.addEventListener("click", () => {
-  removeEffectClicked();
   if (display.value.includes("-")) {
     display.value = display.value.replace("-", "");
     display.value = "+" + display.value;
@@ -36,26 +43,14 @@ C?.addEventListener("click", () => {
 
 numbers.forEach((el) => {
   el.addEventListener("click", () => {
-    let curVal: string = display.value;
-
-    removeEffectClicked();
-    display.value = `${el.innerHTML}`;
-    if ((effectClicked = "")) {
-      return;
+    if (effectClicked !== "" && firstStr !== "") {
+      display.value = "0";
     }
-    switch (effectClicked) {
-      case "&divide":
-        divide();
-        break;
-      case "x":
-        multiply();
-        break;
-      case "-":
-        subtract();
-        break;
-      case "+":
-        add();
-        break;
+
+    if (display.value === "0") {
+      display.value = `${el.innerHTML}`;
+    } else {
+      display.value += `${el.innerHTML}`;
     }
   });
 });
@@ -65,19 +60,31 @@ effects.forEach((el) => {
     removeEffectClicked();
     el.classList.add("clicked");
     effectClicked = el.innerHTML;
+    firstStr = display.value;
   });
 });
 
 function removeEffectClicked() {
   effects.forEach((el) => {
     el.classList.remove("clicked");
+    effectClicked = "";
   });
 }
 
-function divide() {}
+function compute(secondStr: string) {
+  let firstNum: number = Number(firstStr);
+  let secondNum: number = Number(secondStr);
 
-function multiply() {}
-
-function subtract() {}
-
-function add() {}
+  switch (effectClicked) {
+    case "&divide":
+      return firstNum / secondNum;
+    case "x":
+      return firstNum * secondNum;
+    case "-":
+      return firstNum - secondNum;
+    case "+":
+      return firstNum + secondNum;
+    default:
+      return 0;
+  }
+}
