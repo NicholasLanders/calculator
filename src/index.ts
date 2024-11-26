@@ -9,6 +9,7 @@ const plusOrMinus = document.getElementById("plusOrMinus");
 let curTotal: number = 0;
 let firstStr: string = "";
 let effectClicked: string = "";
+let isFirstDigitSecondNum: boolean = false;
 
 equals?.addEventListener("click", () => {
   curTotal = compute(display.value);
@@ -43,12 +44,9 @@ C?.addEventListener("click", () => {
 
 numbers.forEach((el) => {
   el.addEventListener("click", () => {
-    if (effectClicked !== "" && firstStr !== "") {
-      display.value = "0";
-    }
-
-    if (display.value === "0") {
+    if (display.value === "0" || (isFirstDigitSecondNum === true)) {
       display.value = `${el.innerHTML}`;
+      isFirstDigitSecondNum = false;
     } else {
       display.value += `${el.innerHTML}`;
     }
@@ -61,6 +59,7 @@ effects.forEach((el) => {
     el.classList.add("clicked");
     effectClicked = el.innerHTML;
     firstStr = display.value;
+    isFirstDigitSecondNum = true;
   });
 });
 
