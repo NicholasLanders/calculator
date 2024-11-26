@@ -6,7 +6,7 @@ const C = document.getElementById("C");
 const equals = document.getElementById("equals");
 const plusOrMinus = document.getElementById("plusOrMinus");
 
-let curTotal: number = 0;
+let curTotal: string = "0";
 let firstStr: string = "";
 let effectClicked: string = "";
 let isFirstDigitSecondNum: boolean = false;
@@ -14,7 +14,7 @@ let isFirstDigitSecondNum: boolean = false;
 equals?.addEventListener("click", () => {
   curTotal = compute(display.value);
   removeEffectClicked();
-  display.value = String(curTotal);
+  display.value = curTotal;
   firstStr = "";
 });
 
@@ -39,12 +39,12 @@ plusOrMinus?.addEventListener("click", () => {
 C?.addEventListener("click", () => {
   removeEffectClicked();
   display.value = "0";
-  curTotal = 0;
+  curTotal = "0";
 });
 
 numbers.forEach((el) => {
   el.addEventListener("click", () => {
-    if (display.value === "0" || (isFirstDigitSecondNum === true)) {
+    if (display.value === "0" || isFirstDigitSecondNum === true) {
       display.value = `${el.innerHTML}`;
       isFirstDigitSecondNum = false;
     } else {
@@ -75,15 +75,16 @@ function compute(secondStr: string) {
   let secondNum: number = Number(secondStr);
 
   switch (effectClicked) {
-    case "&divide":
-      return firstNum / secondNum;
+    case "÷":
+      if (secondNum === 0) return "NaN";
+      return String(firstNum / secondNum);
     case "x":
-      return firstNum * secondNum;
+      return String(firstNum * secondNum);
     case "-":
-      return firstNum - secondNum;
+      return String(firstNum - secondNum);
     case "+":
-      return firstNum + secondNum;
+      return String(firstNum + secondNum);
     default:
-      return 0;
+      return "0";
   }
 }
