@@ -8,14 +8,21 @@ const plusOrMinus = document.getElementById("plusOrMinus");
 
 let curTotal: string = "0";
 let firstStr: string = "";
+let secondStr: string = "";
 let effectClicked: string = "";
-let isFirstDigitSecondNum: boolean = false;
+let isFirstDigitOfSecondNum: boolean = false;
+let equalPressed: boolean = false;
 
 equals?.addEventListener("click", () => {
-  curTotal = compute(display.value);
-  removeEffectClicked();
+  if (equalPressed === true) {
+    firstStr = display.value;
+  } else {
+    secondStr = display.value;
+  }
+  curTotal = compute();
   display.value = curTotal;
-  firstStr = "";
+
+  equalPressed = true;
 });
 
 period?.addEventListener("click", () => {
@@ -38,15 +45,22 @@ plusOrMinus?.addEventListener("click", () => {
 
 C?.addEventListener("click", () => {
   removeEffectClicked();
+  effectClicked = "";
   display.value = "0";
   curTotal = "0";
 });
 
 numbers.forEach((el) => {
   el.addEventListener("click", () => {
-    if (display.value === "0" || isFirstDigitSecondNum === true) {
+    if (
+      display.value === "0" ||
+      isFirstDigitOfSecondNum === true ||
+      equalPressed === true
+    ) {
       display.value = `${el.innerHTML}`;
-      isFirstDigitSecondNum = false;
+      isFirstDigitOfSecondNum = false;
+      equalPressed = false;
+      removeEffectClicked();
     } else {
       display.value += `${el.innerHTML}`;
     }
@@ -59,18 +73,22 @@ effects.forEach((el) => {
     el.classList.add("clicked");
     effectClicked = el.innerHTML;
     firstStr = display.value;
-    isFirstDigitSecondNum = true;
+    isFirstDigitOfSecondNum = true;
   });
 });
 
 function removeEffectClicked() {
   effects.forEach((el) => {
     el.classList.remove("clicked");
-    effectClicked = "";
   });
 }
 
-function compute(secondStr: string) {
+function removeNumbers() {
+  firstStr = "";
+  secondStr = "";
+}
+
+function compute() {
   let firstNum: number = Number(firstStr);
   let secondNum: number = Number(secondStr);
 
