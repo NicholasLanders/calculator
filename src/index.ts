@@ -1,3 +1,5 @@
+import { compute } from "./compute.js";
+
 const numbers = document.querySelectorAll(".number");
 const effects = document.querySelectorAll(".effect");
 const display = document.getElementById("display") as HTMLInputElement;
@@ -19,7 +21,7 @@ equals?.addEventListener("click", () => {
   } else {
     secondStr = display.value;
   }
-  curTotal = compute();
+  curTotal = compute(firstStr, secondStr, effectClicked);
   display.value = curTotal;
 
   equalPressed = true;
@@ -81,28 +83,4 @@ function removeEffectClicked() {
   effects.forEach((el) => {
     el.classList.remove("clicked");
   });
-}
-
-function removeNumbers() {
-  firstStr = "";
-  secondStr = "";
-}
-
-function compute() {
-  let firstNum: number = Number(firstStr);
-  let secondNum: number = Number(secondStr);
-
-  switch (effectClicked) {
-    case "÷":
-      if (secondNum === 0) return "NaN";
-      return String(firstNum / secondNum);
-    case "x":
-      return String(firstNum * secondNum);
-    case "-":
-      return String(firstNum - secondNum);
-    case "+":
-      return String(firstNum + secondNum);
-    default:
-      return "0";
-  }
 }
