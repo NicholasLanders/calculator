@@ -32,3 +32,6 @@ Thumbs.db
 
 # Nginx files (if any temporary or sensitive configs)
 nginx.conf.backup
+
+# Vitest related files
+coverage/
