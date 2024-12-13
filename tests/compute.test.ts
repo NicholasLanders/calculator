@@ -16,3 +16,7 @@ test("Multiplying Test", () => {
 test("Dividing Test", () => {
   expect(compute("10", "20", "÷")).toBe("0.5");
 });
+
+test("Divide by 0 Test", () => {
+  expect(compute("10", "0", "÷")).toBe("NaN");
+});
