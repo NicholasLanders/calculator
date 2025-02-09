@@ -9,3 +9,4 @@ A few concepts were covered in this project including:
 - Unit/End to End Testing using Vitest and Cypress
 - Template Literals
 - Docker
+- Nginx
