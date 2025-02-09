@@ -64,10 +64,14 @@ button:hover {
   cursor: pointer;
 }
 
-.effect:hover,
-#C:hover,
-#equals:hover {
-  background-color: white;
+/* The hover function doesn't act as expected on mobile, so only using
+   for desktop */
+@media (min-width: 769px) {
+  .effect:hover,
+  #C:hover,
+  #equals:hover {
+    background-color: white;
+  }
 }
 
 .effect.clicked {
